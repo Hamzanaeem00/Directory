@@ -7,23 +7,22 @@ function Movieform() {
   const [rating, setRating] = useState('')
   const [duration, setDuration]= useState('')
   const [movieInput, setMovieInput]= useState([])
-  const [ratingInput, setRatingInput]= useState([])
-  const [durationInput, setDurationInput]= useState([])
+  
 
-
-  const addData =(e)=>{
+  const addData=(e)=>{
        console.log("working");
        e.preventDefault();
-      //  console.log("movieName==>",movieName);
       setMovieName('')
       setDuration('')
       setRating('')
-      setMovieInput([...movieInput, movieName ])
-      setRatingInput([...ratingInput, rating ])
-      setDurationInput([...durationInput, duration ])
-
-      // console.log(allInput);  }
-  }
+      movieInput.push({
+        name: movieName,
+        ratings: rating +'/100',
+        time: duration
+      })
+      setMovieInput([...movieInput ])
+    }
+    
 
   return (
   <div className='layout-row justify-content-center mt-100'>
@@ -80,8 +79,10 @@ function Movieform() {
       </div> 
     </section>
       <div className='layout-column w-30'>
-          <Search />
-          <Movieslist list={movieInput} list2={durationInput} list1={ratingInput} /> 
+          <Search  list={movieInput} />
+          {/* <Movieslist list={movieInput} list2={durationInput} list1={ratingInput} />  */}
+          <Movieslist list={movieInput} /> 
+
           <div data-testid='noResult'>
             <h3 className='text-center'>No Results Found</h3>
           </div>

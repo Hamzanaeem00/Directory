@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import 'h8k-components'
 
-import { Movieform, Movieslist, Search } from './components'
+import { Movieform } from './components'
 
 const title = 'Favorite Movie Directory'
 
